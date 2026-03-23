@@ -1,0 +1,670 @@
+[
+    {
+        "id": "986d56967000333c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f0ac09474ae3863b",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "dfca146ff50e495e",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "bc2abc54bdabeaf4",
+        "type": "ui-page",
+        "name": "Weather",
+        "ui": "f0ac09474ae3863b",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "dfca146ff50e495e",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "1d3d19e494a92676",
+        "type": "ui-group",
+        "name": "Maracay",
+        "page": "bc2abc54bdabeaf4",
+        "width": 6,
+        "height": 1,
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "a23a70449ef9af7c",
+        "type": "ui-group",
+        "name": "Kangasala",
+        "page": "bc2abc54bdabeaf4",
+        "width": 6,
+        "height": 1,
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "418aa7e47980ef36",
+        "type": "ui-group",
+        "name": "Tampere",
+        "page": "bc2abc54bdabeaf4",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "80ec382d1aa897b0",
+        "type": "inject",
+        "z": "986d56967000333c",
+        "name": "",
+        "props": [],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 240,
+        "wires": [
+            [
+                "e80d186b6a0bdbc5",
+                "3ea381131794ee0a",
+                "1118889437570d8c"
+            ]
+        ]
+    },
+    {
+        "id": "e80d186b6a0bdbc5",
+        "type": "http request",
+        "z": "986d56967000333c",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://api.weatherapi.com/v1/current.json?key=9bb4519b735f4110bd2134559261803&q=kangasala&aqi=no",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 230,
+        "y": 160,
+        "wires": [
+            [
+                "9c9b829876f5bdfb"
+            ]
+        ]
+    },
+    {
+        "id": "9c9b829876f5bdfb",
+        "type": "json",
+        "z": "986d56967000333c",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "679836b0fabecdd6"
+            ]
+        ]
+    },
+    {
+        "id": "ea6c7cfe8bec4702",
+        "type": "ui-gauge",
+        "z": "986d56967000333c",
+        "name": "Temperature",
+        "group": "a23a70449ef9af7c",
+        "order": 2,
+        "value": "my_temp",
+        "valueType": "flow",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "rounded",
+        "title": "Temperatura",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "Degrees C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "-30",
+                "color": "#5c60d6",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "-5",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "17",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "-30",
+        "max": "50",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1070,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ab8f31978fc5a9d8",
+        "type": "ui-gauge",
+        "z": "986d56967000333c",
+        "name": "Temperature",
+        "group": "418aa7e47980ef36",
+        "order": 1,
+        "value": "payload.current.temp_c",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "rounded",
+        "title": "Temperatura",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "Degrees C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "-30",
+                "color": "#5c60d6",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "-5",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "17",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "-30",
+        "max": "50",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 630,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3ea381131794ee0a",
+        "type": "http request",
+        "z": "986d56967000333c",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://api.weatherapi.com/v1/current.json?key=9bb4519b735f4110bd2134559261803&q=tampere&aqi=no",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 290,
+        "y": 240,
+        "wires": [
+            [
+                "8e1ce8f61991f87e"
+            ]
+        ]
+    },
+    {
+        "id": "8e1ce8f61991f87e",
+        "type": "json",
+        "z": "986d56967000333c",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 450,
+        "y": 240,
+        "wires": [
+            [
+                "ab8f31978fc5a9d8"
+            ]
+        ]
+    },
+    {
+        "id": "1118889437570d8c",
+        "type": "http request",
+        "z": "986d56967000333c",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://api.weatherapi.com/v1/current.json?key=9bb4519b735f4110bd2134559261803&q=maracay&aqi=no",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 290,
+        "y": 300,
+        "wires": [
+            [
+                "f15e5f077cf63758"
+            ]
+        ]
+    },
+    {
+        "id": "f15e5f077cf63758",
+        "type": "json",
+        "z": "986d56967000333c",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 450,
+        "y": 300,
+        "wires": [
+            [
+                "4cfb2684041310fc"
+            ]
+        ]
+    },
+    {
+        "id": "4cfb2684041310fc",
+        "type": "ui-gauge",
+        "z": "986d56967000333c",
+        "name": "Temperature",
+        "group": "1d3d19e494a92676",
+        "order": 1,
+        "value": "payload.current.temp_c",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "rounded",
+        "title": "Temperatura",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "Degrees C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "-30",
+                "color": "#5c60d6",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "-5",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "17",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "-30",
+        "max": "50",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 630,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "96bc88a700177b31",
+        "type": "comment",
+        "z": "986d56967000333c",
+        "name": "",
+        "info": "",
+        "x": 400,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "38283d4634772151",
+        "type": "ui-button",
+        "z": "986d56967000333c",
+        "group": "a23a70449ef9af7c",
+        "name": "deg_c",
+        "label": "Deg C",
+        "order": 3,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "deg_c",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 530,
+        "y": 60,
+        "wires": [
+            [
+                "29a63a248d63102c"
+            ]
+        ]
+    },
+    {
+        "id": "679836b0fabecdd6",
+        "type": "change",
+        "z": "986d56967000333c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "58661b4a97544dbe",
+        "type": "ui-button",
+        "z": "986d56967000333c",
+        "group": "a23a70449ef9af7c",
+        "name": "deg_f",
+        "label": "Deg F",
+        "order": 1,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "deg_f",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 530,
+        "y": 100,
+        "wires": [
+            [
+                "29a63a248d63102c"
+            ]
+        ]
+    },
+    {
+        "id": "a94579ab50859412",
+        "type": "change",
+        "z": "986d56967000333c",
+        "name": "Celsius Deg",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ui_update.min",
+                "pt": "msg",
+                "to": "-30",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "my_temp",
+                "pt": "flow",
+                "to": "payload.current.temp_c",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ui_update.max",
+                "pt": "msg",
+                "to": "50",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ui_update.units",
+                "pt": "msg",
+                "to": "Degrees C",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 830,
+        "y": 40,
+        "wires": [
+            [
+                "ea6c7cfe8bec4702"
+            ]
+        ]
+    },
+    {
+        "id": "29a63a248d63102c",
+        "type": "switch",
+        "z": "986d56967000333c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "deg_c",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 670,
+        "y": 80,
+        "wires": [
+            [
+                "a94579ab50859412"
+            ],
+            [
+                "0a7428c496020e8a"
+            ]
+        ]
+    },
+    {
+        "id": "0a7428c496020e8a",
+        "type": "change",
+        "z": "986d56967000333c",
+        "name": "Fahr Deg",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ui_update.min",
+                "pt": "msg",
+                "to": "4",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "my_temp",
+                "pt": "flow",
+                "to": "payload.current.temp_f",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "ui_update.max",
+                "pt": "msg",
+                "to": "90",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "ui_update.units",
+                "pt": "msg",
+                "to": "Degrees F",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 100,
+        "wires": [
+            [
+                "ea6c7cfe8bec4702"
+            ]
+        ]
+    }
+]
