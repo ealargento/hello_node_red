@@ -1,5 +1,9 @@
 {
     "e80d186b6a0bdbc5": {},
     "3ea381131794ee0a": {},
-    "1118889437570d8c": {}
+    "1118889437570d8c": {},
+    "37d2186c9e307e31": {
+        "host": "http://homeassistant.local:8123",
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI1Mzk3YjZkODE2MjA0ODM3OGM4ZjYzYjVmM2Q2MTA1ZSIsImlhdCI6MTc3NDM1NzE0NCwiZXhwIjoyMDg5NzE3MTQ0fQ.og3xZmRg4Aes4ebbEfY4BR_3Vhw2YbkIjJt4mIy8PuA"
+    }
 }
